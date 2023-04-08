@@ -1,18 +1,56 @@
 import os
+import tkinter as tk
+from tkinter import filedialog, messagebox
 
-# Replace "PATH" with the path to the folder containing your photo files
-folder = "PATH"
+def browse_dir():
+    global selected_dir
+    selected_dir = filedialog.askdirectory()
+    if selected_dir:
+        dir_label.config(text=selected_dir)
 
-# Get a list of all the files in the folder
-files = os.listdir(folder)
+def rename_files():
+    if not selected_dir:
+        messagebox.showwarning("Warning", "Please select a directory")
+        return
+    old_ext = old_ext_entry.get().strip()
+    new_ext = new_ext_entry.get().strip()
+    if not old_ext or not new_ext:
+        messagebox.showwarning("Warning", "Please enter old and new extensions")
+        return
+    if old_ext[0] != '.':
+        old_ext = '.' + old_ext
+    if new_ext[0] != '.':
+        new_ext = '.' + new_ext
+    for filename in os.listdir(selected_dir):
+        if filename.endswith(old_ext):
+            base_name = os.path.splitext(filename)[0]
+            new_name = base_name + new_ext
+            os.rename(os.path.join(selected_dir, filename), os.path.join(selected_dir, new_name))
+    messagebox.showinfo("Success", "File extensions have been changed")
 
-# Loop through the files
-for file in files:
-  # Get the file's current name and extension
-  name, ext = os.path.splitext(file)
+window = tk.Tk()
+window.geometry("600x300")
+window.title("File Extension Changer")
 
-  # Create the new name by adding "2" to the end of the current name
-  new_name = name + "2" + ext
+browse_button = tk.Button(window, text="Select Directory", command=browse_dir)
+browse_button.pack(pady=10)
 
-  # Use the os.rename() function to rename the file
-  os.rename(os.path.join(folder, file), os.path.join(folder, new_name))
+dir_label = tk.Label(window, text="No directory selected")
+dir_label.pack()
+
+old_ext_label = tk.Label(window, text="Enter old extension:")
+old_ext_label.pack(pady=10)
+
+old_ext_entry = tk.Entry(window)
+old_ext_entry.pack()
+
+new_ext_label = tk.Label(window, text="Enter new extension:")
+new_ext_label.pack(pady=10)
+
+new_ext_entry = tk.Entry(window)
+new_ext_entry.pack()
+
+run_button = tk.Button(window, text="Run", command=rename_files)
+run_button.pack(pady=10)
+
+window.mainloop()
