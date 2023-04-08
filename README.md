@@ -3,7 +3,7 @@ Rename file extensions and can add numbers to the end of a file name in a direct
 
 This is a Python script with a graphical user interface built using the tkinter library. The purpose of this script is to rename all files with a specified file extension in a selected directory to a new file extension. The user selects the directory using a file explorer dialog, enters the old extension and new extension into text boxes, and has the option to add a number to the end of the file name using a checkbox and number entry field. Once the user has entered all the necessary information and clicks the "Run" button, the script renames all files with the old extension to the new extension in the specified directory. If the checkbox for adding a number is selected, the script adds the number to the end of the file name. The user is notified with a message box when the script has completed the renaming process.
 
-##How to use:
+## How to use:
 
 Download the uwu.py file from the GitHub repository.
 
