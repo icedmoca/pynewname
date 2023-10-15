@@ -9,9 +9,9 @@ Download the main.py file from the GitHub repository.
 
 Install Python on your computer if it is not already installed. You can download it from the official website: https://www.python.org/downloads/
 
-Install the required Python modules by running the following command in your command prompt or terminal: pip install tk.
+Install the required Python modules by running the following command in your command prompt or terminal: 'pip install tk'
 
-Double-click on the uwu.py file to open the graphical user interface.
+Double-click on the main.py file to open the graphical user interface.
 
 Click the "Select Directory" button to choose the directory containing the files you want to rename.
 
