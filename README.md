@@ -5,7 +5,7 @@ This is a Python script with a graphical user interface built using the tkinter 
 
 ## How to use:
 
-Download the uwu.py file from the GitHub repository.
+Download the main.py file from the GitHub repository.
 
 Install Python on your computer if it is not already installed. You can download it from the official website: https://www.python.org/downloads/
 
